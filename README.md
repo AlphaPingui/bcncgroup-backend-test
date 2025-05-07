@@ -69,6 +69,24 @@ Convenciones: Reglas básicas sobre nombres de variables, imports y estructura d
 
 ---
 
+## Dockerización
+
+- Multi-stage build con Gradle y Temurin JRE 21
+
+- Genera una imagen ligera optimizada para producción
+
+- Expone el puerto 5000 como requiere la prueba técnica
+
+### Cómo construir la imagen
+docker build -t similar-products .
+
+### Cómo ejecutar la app en Docker
+
+docker run --name similar-products similar-products
+
+> Este comando ejecuta la app sin mapear el puerto 5000 en el host para evitar conflictos (como me los ha estado dando a mi usando macOS)
+___
+
 ## Flujo de trabajo con Git
 
 Este proyecto sigue el modelo de ramas basado en Git Flow:
@@ -93,6 +111,17 @@ Este repositorio sigue el estándar de commits convencionales para mejorar la le
 - `docs`: actualización del README u otra documentación.
 - `chore`: tareas de mantenimiento.
 
+---
+
+## Estructura de commits
+
+Se han implementado test en tres capas:
+
+- Cliente (`ProdudctClient`)
+- Servicio (`SimilarProductService`)
+- Controlador (`SimilarProductController`)
+
+> Todos los tests se ejecutan con `./gradlew test`
 ---
 
 ## Licencia
