@@ -10,4 +10,5 @@ import java.util.List;
 @AllArgsConstructor
 public class SimilarProducts {
     private List<ProductDetail> products;
+    // Ready for scalability
 }
