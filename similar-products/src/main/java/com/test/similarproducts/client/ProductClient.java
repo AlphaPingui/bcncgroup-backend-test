@@ -5,9 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
-import org.springframework.web.reactive.function.client.WebClientResponseException;
 
-import java.util.Collections;
 import java.util.List;
 
 @Component
@@ -19,26 +17,18 @@ public class ProductClient {
             .build();
 
     public List<String> getSimilarProductIds(String productId) {
-        try {
-            return webClient.get()
-                    .uri("/product/{id}/similarids", productId)
-                    .retrieve()
-                    .bodyToMono(new ParameterizedTypeReference<List<String>>() {})
-                    .block();
-        } catch (WebClientResponseException.NotFound e) {
-            return Collections.emptyList();
-        }
+        return webClient.get()
+                .uri("/product/{id}/similarids", productId)
+                .retrieve()
+                .bodyToMono(new ParameterizedTypeReference<List<String>>() {})
+                .block();
     }
 
     public ProductDetail getProductDetail(String productId) {
-        try {
-            return webClient.get()
-                    .uri("/product/{id}", productId)
-                    .retrieve()
-                    .bodyToMono(ProductDetail.class)
-                    .block();
-        } catch (WebClientResponseException.NotFound e) {
-            return null;
-        }
+        return webClient.get()
+                .uri("/product/{id}", productId)
+                .retrieve()
+                .bodyToMono(ProductDetail.class)
+                .block();
     }
 }
