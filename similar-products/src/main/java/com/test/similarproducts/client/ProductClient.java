@@ -2,6 +2,7 @@ package com.test.similarproducts.client;
 
 import com.test.similarproducts.model.ProductDetail;
 import lombok.RequiredArgsConstructor;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
@@ -22,8 +23,7 @@ public class ProductClient {
             return webClient.get()
                     .uri("/product/{id}/similarids", productId)
                     .retrieve()
-                    .bodyToFlux(String.class)
-                    .collectList()
+                    .bodyToMono(new ParameterizedTypeReference<List<String>>() {})
                     .block();
         } catch (WebClientResponseException.NotFound e) {
             return Collections.emptyList();
