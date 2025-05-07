@@ -78,11 +78,11 @@ Convenciones: Reglas básicas sobre nombres de variables, imports y estructura d
 - Expone el puerto 5000 como requiere la prueba técnica
 
 ### Cómo construir la imagen
-docker build -t similar-products .
+`docker build -t similar-products .`
 
 ### Cómo ejecutar la app en Docker
 
-docker run --name similar-products similar-products
+`docker run --name similar-products similar-products`
 
 > Este comando ejecuta la app sin mapear el puerto 5000 en el host para evitar conflictos (como me los ha estado dando a mi usando macOS)
 ___
