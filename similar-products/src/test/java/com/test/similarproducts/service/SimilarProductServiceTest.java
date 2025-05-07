@@ -21,7 +21,7 @@ class SimilarProductServiceTest {
   }
 
   @Test
-  void getSimilarProducts_returnsFilteredProductList() {
+  void getSimilarProductsReturnsFilteredProductList() {
     when(productClient.getSimilarProductIds("1")).thenReturn(List.of("2", "3", "4"));
 
     when(productClient.getProductDetail("2"))

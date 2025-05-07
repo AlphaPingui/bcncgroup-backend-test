@@ -11,7 +11,7 @@ class ProductClientIntegrationTest {
   private final ProductClient productClient = new ProductClient();
 
   @Test
-  void getSimilarProductIds_returnsList() {
+  void getSimilarProductIdsReturnsList() {
     List<String> result = productClient.getSimilarProductIds("1");
 
     assertNotNull(result);
@@ -19,7 +19,7 @@ class ProductClientIntegrationTest {
   }
 
   @Test
-  void getProductDetail_returnsProduct() {
+  void getProductDetailReturnsProduct() {
     ProductDetail result = productClient.getProductDetail("2");
 
     assertNotNull(result);
